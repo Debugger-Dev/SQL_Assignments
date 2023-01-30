@@ -1,0 +1,56 @@
+CREATE DATABASE my_db DEFAULT CHARACTER SET = 'utf8mb4';
+
+show databases;
+
+use my_db;
+
+drop database my_db;
+
+create table if NOT exists employees(
+    id INT,
+    name VARCHAR(50),
+    email VARCHAR(20),
+    address varchar(50)
+)
+
+show tables;
+--or
+show create table employees;
+
+insert into employees values(1,'Devidutta Sutar','devhere@gmail.com','Some where in the earth,but a great place to live');
+insert into employees(name,id,address,email) values ('Iam Don',2,'In mars','nobody@gmail.com');
+insert into employees values(3,'XYZ','XYZ@gmail.com','ABC'),(4,'HFD','HFD@gmail.com','PLO');
+
+
+SELECT * from employees;
+
+create table if NOT exists employees_with_integrity_constraint(
+    id INT NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(20),
+    address varchar(50),
+    salary double,
+    date DATE default '2020-01-01',
+    UNIQUE (id),
+    check (salary>1000)
+);
+
+create table if NOT exists employees_with_integrity_constraint(
+    id INT NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(20),
+    address varchar(50),
+    salary double,
+    date DATE default '2020-01-01',
+    constraint UNIQUE_ID UNIQUE (id),
+    constraint SALARY_CHECK check (salary>1000)
+);
+
+
+alter table employees add DOB date;
+
+alter Table employees modify column name varchar(20);
+
+alter table employees_with_integrity_constraint drop column salary;
+
+alter table employees rename column name to full_name;
