@@ -54,3 +54,12 @@ alter Table employees modify column name varchar(20);
 alter table employees_with_integrity_constraint drop column salary;
 
 alter table employees rename column name to full_name;
+
+alter table employees add constraint unique_id unique (id) ;
+
+alter table employees drop constraint unique_id;
+
+
+truncate table employees;
+
+drop table employees;
