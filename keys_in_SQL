@@ -1,0 +1,43 @@
+#Primary Key
+#WAY-1
+create table persons(
+    id int,
+    name varchar(40),
+    age int,
+    PRIMARY KEY (id)
+)
+
+#WAY-2(recommended)
+create table persons_1(
+    id int,
+    name varchar(40),
+    age int,
+    constraint primary_key PRIMARY KEY (id)
+)
+
+#Unique Key
+create table persons_2(
+    id int,
+    name varchar(40),
+    age int UNIQUE,
+    constraint primary_key PRIMARY KEY (id)
+);
+
+#Foreign Key Example
+create table customer(
+    cust_id int,
+    name varchar(50),
+    address varchar(100),
+    constraint p_key primary key (cust_id)
+)
+
+create table orders(
+    order_id int,
+    order_name varchar(50),
+    order_quan int,
+    customer_id int,
+    constraint p_key primary key (order_id),
+    constraint f_key foreign key (customer_id) REFERENCES customer(cust_id)
+);
+    
+    
